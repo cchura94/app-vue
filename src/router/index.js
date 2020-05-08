@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contacto from '../views/Contacto.vue'
+import Venta from '../views/Venta.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ Vue.use(VueRouter)
     path: '/contacto',
     name: 'Contacto',
     component: Contacto
+  },
+  {
+    path: '/venta',
+    name: 'Venta',
+    component: Venta
   }
 ]
 

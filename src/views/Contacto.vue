@@ -12,7 +12,7 @@
         <br>
         <button>Enviar mensaje</button>
         <button type="reset">Restablecer</button>
-
+        
     </dir>
 </template>
 
