@@ -20,15 +20,26 @@
 
             </div>
             <div class="col-md-6">
-                
-                <div class="card" style="width: 18rem;">
+                <h1>CArrito:</h1>
+                <div class="card" >
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" v-for="(c, index) in carrito" :key="index">{{ c }}</li>
+                        <li class="list-group-item" v-for="(c, index) in carrito" :key="index">
+                            {{ c.nombre }} - Bs. {{ c.precio }}
+
+                            <button @click="eliminar(c)">x</button>
+                        </li>
                     </ul>
+                    <h1>Total: {{ total }}</h1>
+                    <code>
+                        {{ $data }}
+                    </code>
+                    
                 </div>
 
             </div>
         </div>
+
+        
     </div>
 </template>
 
@@ -43,14 +54,20 @@ export default {
                 {nombre: "Radio", precio: 1250, imagen: "img.jpg", cantidad: 5},
                 {nombre: "Mochila", precio: 450, imagen: "img.jpg", cantidad: 6}
             ],
-            carrito: []
+            carrito: [],
+            total: 0
         }
     },
     methods:{
         agregar(prod){
+            this.total += prod.precio;
             this.carrito.push({nombre: prod.nombre, precio: prod.precio, imagen: prod.imagen, cantidad: 1})
+        },
+        eliminar(prod){
+            alert("eliminar")
         }
-    }
+    },
+
 
 }
 </script>
