@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Venta de Productos</h1> 
-                <div class="row">
+                <button @click="estado=!estado">{{ (estado)?'Nuevo Producto':'Lista de Productos' }}</button>
+                <div class="row" v-if="estado">
                     <div class="col-md-4" v-for="(prod, index) in productos" :key="index">
 
                         <div class="card" style="width: 10rem;">
@@ -16,7 +17,27 @@
                         </div>
 
                     </div>
-                </div>            
+                </div>  
+                <div class="row" v-if="!estado">
+                    <h2>Nuevo Producto</h2>
+                    <div class="col-md-12">
+                        <label for="">Ingrese Nombre:</label>
+                        <input type="text" class="form-control" v-model="producto.nombre">   
+                        
+                        <label for="">Ingrese Precio:</label>
+                        <input type="number" step="0.01" class="form-control" v-model="producto.precio">   
+
+                        <label for="">Ingrese Imagen:</label>
+                        <input type="text" class="form-control" v-model="producto.imagen">
+
+                        <label for="">Ingrese Cantidad:</label>
+                        <input type="text" class="form-control" v-model="producto.cantidad"> 
+
+                        <button @click="agregarProducto()" class="btn btn-outline-primary">Agregar Producto</button> 
+                      
+                    
+                    </div>   
+                </div>          
 
             </div>
             <div class="col-md-6">
@@ -55,7 +76,14 @@ export default {
                 {nombre: "Mochila", precio: 450, imagen: "img.jpg", cantidad: 6}
             ],
             carrito: [],
-            total: 0
+            total: 0,
+            producto: {
+                nombre: '',
+                precio: 0.00,
+                imagen: '',
+                cantidad: 1
+            },
+            estado:false
         }
     },
     methods:{
@@ -65,6 +93,10 @@ export default {
         },
         eliminar(prod){
             alert("eliminar")
+        },
+        agregarProducto(){
+            this.productos.push(this.producto)
+            this.estado = true
         }
     },
 

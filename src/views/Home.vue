@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Bienvenido a Vue.js"/>
+    <HelloWorld :titulo="t"/>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  data(){
+    return {
+      t: "Este es mi Página de INICIO"
+    }
   }
 }
 </script>
